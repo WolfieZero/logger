@@ -17,6 +17,12 @@ class logger {
 		fwrite($this->fp, $write);
 	}
 
+	function logVar($log) {
+		$write = date(DATE).print_r($log, true)."\r\n";
+		fwrite($this->fp, $write);
+	}
+
+
 	function close() {
 		fclose($this->fp);
 	}
