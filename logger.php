@@ -2,7 +2,7 @@
 
 define('LOG_FILE',	'log');
 define('MODE',		'a');
-define('DATE',		'H:m:s - m.d.y - ');
+define('DATE',		'H:m:s/m.d.y - ');
 
 class logger {
 
