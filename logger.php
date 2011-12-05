@@ -2,14 +2,14 @@
 
 define('LOG_FILE',	'log');
 define('MODE',		'a');
-define('DATE',		'H:m:s/m.d.y - ');
+define('DATE',		'H:i:s/m.d.y - ');
 
 class logger {
 
 	private $fp;
-	
-	function __construct() {
-		$this->fp = fopen(LOG_FILE, MODE);
+
+	function __construct($location='') {
+		$this->fp = fopen($location.LOG_FILE, MODE);
 	}
 
 	function log($log) {
