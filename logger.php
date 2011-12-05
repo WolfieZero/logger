@@ -5,9 +5,9 @@ define('MODE',		'a');
 define('DATE',		'H:i:s/m.d.y - ');
 
 class logger {
-
+	
 	private $fp;
-
+	
 	/**
 	 * Logger
 	 * 
@@ -16,8 +16,8 @@ class logger {
 	function __construct($location='') {
 		$this->fp = fopen($location.LOG_FILE, MODE);
 	}
-
-
+	
+	
 	/**
 	 * Log
 	 * Adds a record to the log file
@@ -41,11 +41,13 @@ class logger {
 	 * @return bool true
 	 */	
 	function logVar($var, $log=null) {
-		$write = date(DATE).$log.' - '.print_r($log, true)."\r\n";
+		$write = date(DATE);
+		if ($log) $write .= $log.' - ';
+		$write .= print_r($var, true)."\r\n";
 		fwrite($this->fp, $write);
 		return true;
 	}
-
+	
 	
 	/**
 	 * Close
@@ -54,5 +56,5 @@ class logger {
 	function close() {
 		fclose($this->fp);
 	}
-
+	
 }
