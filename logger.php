@@ -41,7 +41,7 @@ class logger {
 	 * @return bool true
 	 */	
 	function logVar($var, $log=null) {
-		$write = date(DATE).print_r($log, true)."\r\n";
+		$write = date(DATE).$log.' - '.print_r($log, true)."\r\n";
 		fwrite($this->fp, $write);
 		return true;
 	}
