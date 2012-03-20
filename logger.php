@@ -2,12 +2,12 @@
 
 define('LOG_FILE',	'log');
 define('MODE',		'a');
-define('DATE',		'H:i:s/m.d.y - ');
+define('DATE',		'H:m:s / m.d.y - ');
 
 class logger {
-	
+
 	private $fp;
-	
+
 	/**
 	 * Logger
 	 * 
@@ -15,9 +15,10 @@ class logger {
 	 */
 	function __construct($location='') {
 		$this->fp = fopen($location.LOG_FILE, MODE);
+		fwrite($this->fp, '----------------------------------------------------'."\r\n");
 	}
-	
-	
+
+
 	/**
 	 * Log
 	 * Adds a record to the log file
@@ -30,8 +31,8 @@ class logger {
 		fwrite($this->fp, $write);
 		return true;
 	}
-	
-	
+
+
 	/**
 	 * Log Variable
 	 * Takes a variable and does a print_r
@@ -47,8 +48,8 @@ class logger {
 		fwrite($this->fp, $write);
 		return true;
 	}
-	
-	
+
+
 	/**
 	 * Close
 	 * Closes the log file
@@ -56,5 +57,5 @@ class logger {
 	function close() {
 		fclose($this->fp);
 	}
-	
+
 }
